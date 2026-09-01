@@ -4,6 +4,17 @@ Registro de cambios del framework de prompting. Formato basado en [Keep a Change
 
 ---
 
+## [1.13.0] — 2026-09-01
+
+### Agregado
+
+- **Carpeta `Base/`** — marcos de orquestación de propósito general, fuera de `PromptFramework` porque no son piezas componibles de la jerarquía `Prompt → Profile → RuleSet → Rules`: no fijan el comportamiento de un agente, sino el protocolo de un colectivo de agentes sobre un artefacto. Incluye su `README.md` con la forma de invocación y el catálogo de marcos.
+- **Marco `Base/Mesa-Evaluadora.md`** — ciclo cerrado de revisión, veredicto, corrección y verificación sobre la cadena `spec → plan → tareas → código/pruebas`, genérico respecto de lenguaje, framework y herramienta de orquestación. Define: contrato de entrada obligatorio (§2, con `decisiones_cerradas` y presupuesto); escala de evidencia E1–E4 más el nivel C de conjetura, que solo habilita preguntas y nunca parches (§3); coherencia como métrica de cinco condiciones chequeables mecánicamente antes de convocar a nadie (§3, §5.1); panel armado por caso —núcleo permanente de cuatro roles, catálogo variable activado por señal citada con ubicación, y agentes ad hoc con carta de mandato (§4.1)—; informes independientes y a ciegas, con solicitud de convocatoria en caliente para lo que caiga fuera del mandato (§5.2); jurado de cinco jueces con funciones objetivo diferenciadas, voto por hallazgo con fundamento, quórum, veto acotado y perito sin voto (§4.3, §5.3); cuerpo auditor que diseña parches con texto exacto y no aprueba los propios (§4.4, §5.4); reparación en la capa de origen y propagación explícita a los artefactos derivados (§1, §5.5); verificación posterior con reversión automática ante regresión (§5.6).
+- **Escalada por excepción y condición de corte** — lista cerrada de siete disparadores de consulta al usuario, con formato obligatorio de escalada (pregunta cerrada, opciones, recomendación fundada y comportamiento por defecto ante ausencia de respuesta) y entrega agrupada al final del ciclo (§6). El ciclo cierra por agotamiento de hallazgos sobre el umbral, rendimientos decrecientes, presupuesto de ciclos o escalada bloqueante, y emite un bloque de cierre que documenta la composición del panel con sus motivos, los hallazgos aplicados y revertidos, la deuda declarada, las escaladas pendientes y las capas a revalidar (§7).
+- Completan el documento los esquemas JSON obligatorios de hallazgo, veredicto y parche (§8), la tabla de salvaguardas contra doce fallas típicas de estos sistemas —teatro deliberativo, anclaje, inflación de hallazgos, consenso vacío, parcheo en la capa equivocada, convocatoria inflada, punto ciego, agente ad hoc sin límites (§9)— y el prompt de arranque de diez reglas no negociables (§10).
+
+---
+
 ## [1.12.0] — 2026-08-02
 
 ### Agregado
