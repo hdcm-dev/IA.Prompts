@@ -4,6 +4,23 @@ Registro de cambios del framework de prompting. Formato basado en [Keep a Change
 
 ---
 
+## [1.14.0] — 2026-09-23
+
+### Agregado
+
+- **Documentos transversales en `Base/`** — piezas que no son marcos de orquestación (no definen quién se convoca ni cómo se decide) pero en las que cualquier marco puede apoyarse. `Base/README.md` suma la sección «Documentos transversales» con su catálogo.
+- **`Base/Medios.md`** — declaración de los medios de observación del entorno: un navegador Chromium sin escritorio en contenedor, que alcanza URLs públicas y servicios internos y devuelve captura y registro de consola, y un dispositivo Android físico por USB, mediado por el contenedor dueño del recurso. Fija la regla de exclusividad (asimétrica entre ambos medios), el alcance y los límites de cada uno, el direccionamiento desde el dispositivo y cómo se cita lo observado según la escala de evidencia de `Mesa-Evaluadora.md` §3. Sin medio declarado, un juicio sobre el comportamiento de una interfaz es conjetura y no funda correcciones.
+- **`Base/Estilo-Redaccion-Explicativo.md`** — forma de redactar documentos cuyo propósito es formar criterio: patrón de exposición por pregunta guía, respuesta en una línea y ejemplos contrastados (✅/❌); estructura con definiciones primero, secciones numeradas y citables e índice con glosa; la voz; y la postura, que separa lo verificado de lo razonado y de lo supuesto y declara las ausencias con su motivo. Cierra con anti-patrones, lista de verificación y lo que el documento deliberadamente no cubre. Está escrito aplicándose a sí mismo.
+- **`Base/Iniciar-MCP-Con-Chrome.md`** — procedimiento, escrito tras hacerlo funcionar el 2026-09-04, para manejar un Chrome headless desde un agente vía `chrome-devtools-mcp` en un host Linux sin pantalla: comprobaciones previas en orden, configuración `.mcp.json` con perfil aislado, puente cuando el agente no recibe las herramientas y lista de verificación.
+- **`Base/OUTPUTs/nuevo.md`** y sus tres capturas — prueba de referencia del procedimiento anterior: ingreso a un sitio con un usuario inventado (navegar, mapear elementos, escribir, hacer clic, capturar) y lectura de la respuesta de la aplicación.
+
+### Pendiente
+
+- `Base/Iniciar-MCP-Con-Chrome.md` no figura todavía en el catálogo de `Base/README.md`.
+- `Base/UX-UI.md` se agrega vacío, como marcador; su contenido queda por redactar.
+
+---
+
 ## [1.13.0] — 2026-09-01
 
 ### Agregado
