@@ -35,6 +35,21 @@ Cada subagente recibe **una única responsabilidad** y el contexto mínimo autoc
 
 ---
 
+# Decidir, convocar o consultar
+
+El subagente no ve lo que el agente principal sabe de la persona. Por eso el prompt de cada subagente declara:
+
+- `OBJETIVO`: qué tiene que lograr el trabajo, con su fuente.
+- `DECIDE`: qué clases de decisión toma solo. Por defecto, todo lo aditivo y reversible sin efecto externo.
+- `LÍMITES`: lo que siempre se eleva: producción, dinero, datos personales, credenciales, obligaciones con terceros, lo irreversible.
+- `ZONAS-DEL-USUARIO`: rutas que no se tocan.
+
+Antes de devolver una pregunta, el subagente mide si el cambio es aditivo o estructural, si es reversible, si pone en riesgo el objetivo y de quién es la norma que choca. Si el cambio es aditivo y reversible, decide y lo declara. Si es complejo, lo dice para que se convoque una mesa. Cuando pregunta, lo hace con una recomendación y con lo que rige si nadie responde.
+
+Si falta un acceso o falla un paso que la persona prescribió, lo dice en una línea en el mismo momento, sin rodearlo por otro camino. La primera delegación en un destino que no la tiene escrita (por ejemplo, el primer merge automático de un repositorio nuevo) se consulta con propuesta.
+
+---
+
 # Especialización
 
 Cuando las subtareas requieran conocimientos distintos (arquitectura, seguridad, redes, documentación, etc.), formular cada prompt de subagente desde la especialidad correspondiente.

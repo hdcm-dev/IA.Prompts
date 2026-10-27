@@ -4,6 +4,14 @@ Registro de cambios del framework de prompting. Formato basado en [Keep a Change
 
 ---
 
+## [1.15.0] — 2026-10-27
+
+### Agregado
+
+- **`PromptFramework/Rules/Rule-Agents.md`, sección «Decidir, convocar o consultar»**: la carta de cada subagente declara `OBJETIVO`, `DECIDE`, `LÍMITES` y `ZONAS-DEL-USUARIO`. Antes de devolver una pregunta, el subagente mide el cambio: si es aditivo o estructural, si es reversible, si arriesga el objetivo y de quién es la norma. Lo aditivo y reversible lo decide y lo declara; lo complejo va a una mesa; la consulta lleva recomendación y default. La falta de un acceso o un paso prescripto que falla se informan en el momento. Origen: mesa de lógica de decisión del 2026-10-27; el conocimiento completo es `Knowledge-Logica-De-Decision` de IA.Knowledge.Base.
+
+---
+
 ## [1.14.0] — 2026-09-23
 
 ### Agregado
