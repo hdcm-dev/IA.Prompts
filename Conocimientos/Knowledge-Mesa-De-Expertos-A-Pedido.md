@@ -294,7 +294,7 @@ verifican sobre el expediente de la mesa, que no es un entregable de categoría.
 
 | | |
 | --- | --- |
-| **Índice** | [`Index-Knowledge.md`](Index-Knowledge.md) |
+| **Índice** | Ninguno en este repositorio (en la base de origen, `Index-Knowledge.md`) |
 | **Hermanos** | Ninguno |
 | **Consumidor** | `transversal`. Sin condición de carga: se aplica cuando alguien pide una mesa por nombre, o cuando un trabajo en curso tropieza con un problema que se resuelve convocando en lugar de detener |
 | **Artefacto de referencia** | Ninguno. Lo caracterizado es una convención de proceso |
