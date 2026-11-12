@@ -51,7 +51,7 @@ Ejemplo con bloque `math`:
 \int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}
 ```
 
-Entornos de uso frecuente cubiertos por KaTeX y por MathJax (extensión `ams`): `matrix`, `pmatrix`, `bmatrix`, `cases`, `aligned`.
+Entornos de uso frecuente cubiertos por KaTeX y por MathJax: `matrix`, `pmatrix`, `bmatrix`, `cases`, `aligned` (en MathJax, `aligned` viene de la extensión `ams`, cargada salvo con `input/tex-base`).
 
 ## Signo pesos literal
 
@@ -65,16 +65,16 @@ Entornos de uso frecuente cubiertos por KaTeX y por MathJax (extensión `ams`): 
 
 | Visor | En línea `$` | Bloque `$$` | ```` ```math ```` | `` $`…`$ `` | Motor | Notas |
 |-------|:-:|:-:|:-:|:-:|-------|-------|
-| GitHub | sí | sí | sí | sí | MathJax | En archivos `.md`, el salto de línea alrededor de `$$` pide formato específico |
+| GitHub | sí | sí | sí | sí | MathJax | El bloque `$$` empieza en una línea nueva; la fórmula va entre el `$$` de apertura y el de cierre |
 | GitLab | sí | sí | sí | sí | KaTeX | En issues/MR renderiza sólo las primeras 1000 fórmulas en línea; wiki y archivos del repo no tienen ese límite |
 | VS Code (vista previa integrada) | sí | sí | no confirmado | no confirmado | KaTeX | Activo desde 1.58; se apaga con `"markdown.math.enabled": false` |
 | VS Code + Markdown Preview Enhanced | sí (también `\(…\)`) | sí (también `\[…\]`) | sí | no confirmado | KaTeX o MathJax (configurable) | Motor por defecto: no confirmado |
-| Pandoc | sí | sí | — | sí (`tex_math_gfm`) | según salida | Ver abajo |
+| Pandoc | sí | sí | sí (`tex_math_gfm`) | sí (`tex_math_gfm`) | según salida | `tex_math_gfm` activa por defecto sólo en `gfm`; ver abajo |
 | Obsidian | sí | sí | no confirmado | no confirmado | MathJax | |
 | Typora | requiere habilitarlo | sí | no confirmado | no confirmado | MathJax | `$` en línea: Preferencias → Markdown, y reiniciar |
 | Visor Markdown básico | no | no | no | no | — | Se ve el texto crudo con los `$` |
 
-**Pandoc**: `$…$` y `$$…$$` vienen de la extensión `tex_math_dollars` (si está activa por defecto en cada formato: no confirmado; consultar `pandoc --list-extensions=FORMAT`). A HTML, sin opción usa MathML; para MathJax o KaTeX se usa `--math-method=mathjax` o `--math-method=katex` (`--mathjax` y `--katex` están marcadas como obsoletas). A PDF usa LaTeX por defecto (`pdflatex`), lo que exige un motor LaTeX instalado. En `$$…$$` no se admiten líneas en blanco dentro.
+**Pandoc**: `$…$` y `$$…$$` vienen de la extensión `tex_math_dollars` (activa por defecto en el markdown de Pandoc, `commonmark_x`, `gfm` e `ipynb`, entre otros; para un formato dado, `pandoc --list-extensions=FORMAT`). A HTML, sin opción usa MathML; para MathJax o KaTeX se usa `--math-method=mathjax` o `--math-method=katex` (`--mathjax` y `--katex` están marcadas como obsoletas). A PDF usa LaTeX por defecto (`pdflatex`), lo que exige un motor LaTeX instalado. En `$$…$$` no se admiten líneas en blanco dentro.
 
 **Mermaid**: desde v10.9.0 acepta fórmulas entre `$$` en etiquetas de nodos y aristas, sólo en flowchart y sequence diagram (`A["$$x^2$$"] -->|"$$\sqrt{x+3}$$"| B`). Que GitHub lo renderice dentro de Mermaid **no está documentado**: probarlo en el repo antes de usarlo.
 
@@ -91,7 +91,7 @@ Entornos de uso frecuente cubiertos por KaTeX y por MathJax (extensión `ams`): 
 5. **Lectura en palabras**: toda fórmula en bloque va acompañada de su lectura en prosa («la suma de los primeros $n$ naturales es $n(n+1)/2$»). Sirve al lector humano, al agente que razona sobre el texto y a quien abre la guía en un visor sin render (`Rule-Dual-Audience`).
 6. **Sólo comandos documentados por KaTeX y MathJax**; nada de paquetes LaTeX arbitrarios.
 7. **Escapar todo `$` literal** (precios, variables de shell) según [Signo pesos literal](#signo-pesos-literal).
-8. **Evitar fórmulas en tablas complejas** (el `|` choca con la sintaxis de tabla) y **dentro de Mermaid** salvo que el visor destino lo soporte comprobadamente.
+8. **Evitar fórmulas en tablas complejas** (el `|` puede chocar con la sintaxis de tabla de GFM y exige escaparlo como `\|`) y **dentro de Mermaid** salvo que el visor destino lo soporte comprobadamente.
 9. **Preferir el bloque `math`** cuando el destino principal es GitHub o GitLab; `$$` cuando importa también VS Code u Obsidian.
 
 ---
@@ -100,13 +100,13 @@ Entornos de uso frecuente cubiertos por KaTeX y por MathJax (extensión `ams`): 
 
 | Síntoma | Causa | Corrección |
 |---------|-------|------------|
-| Se ven los `$` crudos | Visor sin soporte, o espacio después del `$` que abre / antes del que cierra | Quitar los espacios; verificar en un visor con soporte |
+| Se ven los `$` crudos | Visor sin soporte, o, en Pandoc, espacio después del `$` que abre o antes del que cierra | Quitar los espacios; verificar en un visor con soporte |
 | Un precio se volvió fórmula | `$` literal sin escapar | `\$` o `<span>$</span>` |
 | Subíndices en cursiva rara o texto en negrita dentro de la fórmula | `_` o `*` interpretados como Markdown | Usar `` $`…`$ `` o bloque `math` |
 | Bloque `$$` roto en Pandoc | Línea en blanco dentro del bloque | Quitarla |
 | Comando no reconocido (texto en rojo) | Comando fuera de KaTeX/MathJax | Reescribir con comandos soportados |
 
-**Verificar el render** antes de cerrar el documento: vista previa integrada de VS Code (KaTeX) y, si el destino es GitHub, la vista del archivo en la rama o el PR (MathJax). Si ambos motores difieren, ajustar hasta que la fórmula se vea igual en los dos.
+**Verificar el render** antes de cerrar el documento: vista previa integrada de VS Code (KaTeX) y, si el destino es GitHub, la vista del archivo en la rama o el PR (MathJax). Si los motores difieren, usar sólo construcciones que rendericen bien en ambos.
 
 ---
 
@@ -114,13 +114,13 @@ Entornos de uso frecuente cubiertos por KaTeX y por MathJax (extensión `ams`): 
 
 Ilustrativo.
 
-> La velocidad media de un móvil es el cociente entre el desplazamiento y el tiempo empleado:
->
-> ```math
-> \bar{v} = \frac{\Delta x}{\Delta t} \qquad \text{(F-1)}
-> ```
->
-> donde $\bar{v}$ es la velocidad media en m/s, $\Delta x$ el desplazamiento en metros y $\Delta t$ el intervalo en segundos. En palabras: cuántos metros avanza, en promedio, por cada segundo. Con $\Delta x = 100\,\mathrm{m}$ y $\Delta t = 20\,\mathrm{s}$, (F-1) da $\bar{v} = 5\,\mathrm{m/s}$.
+La velocidad media de un móvil es el cociente entre el desplazamiento y el tiempo empleado, **(F-1)**:
+
+```math
+\bar{v} = \frac{\Delta x}{\Delta t}
+```
+
+donde $\bar{v}$ es la velocidad media en m/s, $\Delta x$ el desplazamiento en metros y $\Delta t$ el intervalo en segundos. En palabras: cuántos metros avanza, en promedio, por cada segundo. Con $\Delta x = 100\,\mathrm{m}$ y $\Delta t = 20\,\mathrm{s}$, (F-1) da $\bar{v} = 5\,\mathrm{m/s}$.
 
 ---
 
