@@ -29,6 +29,7 @@ Todos los documentos del repositorio mantienen la misma estructura, terminologí
 | Tablas | Resumir o comparar (configuraciones, parámetros, servicios, puertos); sin celdas de texto largo |
 | Bloques de código | Con lenguaje indicado, mínimos y con contexto; sin código irrelevante |
 | Diagramas | Mermaid (preferido sobre ASCII) para arquitectura, flujos, secuencias, dependencias; sin diagramas redundantes |
+| Fórmulas | Notación LaTeX (`$…$`, `$$…$$`, bloque `math`) según `Rule-Math-Formulas.md` |
 | Ejemplos | Reales, obtenidos en la ejecución; los ilustrativos se marcan como tales |
 | Enlaces | Rutas relativas entre documentos relacionados; referenciar en lugar de duplicar |
 

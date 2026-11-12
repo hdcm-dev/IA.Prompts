@@ -4,6 +4,27 @@ Registro de cambios del framework de prompting. Formato basado en [Keep a Change
 
 ---
 
+## [1.17.0] — 2026-11-12
+
+### Agregado
+
+- **`PromptFramework/Profiles/Study-Guide-Documentation-Con-Ilustraciones.md`**: copia íntegra de `Study-Guide-Documentation` (sólo cambian el título y el RuleSet que aplica) más el aprendizaje destilado de una guía de estudio extensa redactada por una mesa en cinco rondas: estilo formal-narrativo (FN-1 a FN-15: bloque formal intacto, marcador invisible de lista única, tramo con caso del corpus, pregunta-respuesta, imagen rotulada y lo abierto, sin evidencia nueva), respuestas explicativas a preguntas guía (PG), propuestas (PR) y temas abiertos y lagunas (TA), evidencia y marcas (EV), resumen de ilustraciones, fórmulas (FO), proceso por rondas, anti-patrones y criterios de aceptación. Cada regla declara su origen (pedido literal del dueño o práctica de la mesa) y trae un caso de origen con sección y extracto.
+- **`PromptFramework/Rules/Rule-Illustrations.md`**: regla atómica (IL-01 a IL-24) para imágenes como evidencia: tipo de lámina, original intacto con sha256, anotación por script, ningún número a mano, pie en cinco tiempos, banda, texto alternativo, lámina dentro del relato, lista de figuras, manifiesto y verificación visual. Se separa del Profile porque sirve a cualquier documentación con evidencia visual, no sólo a guías.
+- **`PromptFramework/RuleSets/RuleSet-Study-Guide-Con-Ilustraciones.md`**: `RuleSet-Study-Guide` + `Rule-Illustrations`.
+- Catálogos actualizados: `Profiles/README.md`, `RuleSets/Readme.md`, `Rules/README.md`.
+
+Origen: pedido del PO del 2026-11-12 («captures el estilo construido, mis observaciones […] y construya un nuevo conocimiento llamado `Study-Guide-Documentation-Con-Ilustraciones` e incluyas todo el contendio de `Study-Guide-Documentation`»).
+
+---
+
+## [1.16.0] — 2026-11-12
+
+### Agregado
+
+- **`PromptFramework/Rules/Rule-Math-Formulas.md`**: cómo escribir fórmulas matemáticas en Markdown (en línea, bloque `$$`, bloque `math`, `` $`…`$ ``), tabla de soporte por visor con fuentes oficiales y lo no confirmado marcado, reglas de estilo para guías de estudio (símbolos definidos, unidades, lectura en palabras, numeración), errores comunes y verificación del render. Se suma a `RuleSet-Study-Guide`, al perfil `Study-Guide-Documentation`, a la tabla de elementos de `Rule-Markdown` y al catálogo de `Rules/README.md`. Origen: pedido del PO del 2026-11-12.
+
+---
+
 ## [1.15.0] — 2026-10-27
 
 ### Agregado

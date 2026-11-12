@@ -18,6 +18,8 @@ Referencia: [Guía conceptual](../Guides/Readme.md) · [README del framework](..
 | [Rule-Documentation](Rule-Documentation.md) | Generación de documentación técnica: contenido real, procedimientos, arquitectura, única fuente de verdad. | …produce o actualiza documentación técnica del sistema. |
 | [Rule-Markdown](Rule-Markdown.md) | Formato y estructura Markdown: jerarquía de encabezados, redacción, tablas/código/diagramas, validación. | …genera cualquier entregable en Markdown. |
 | [Rule-Dual-Audience](Rule-Dual-Audience.md) | Documentación de doble audiencia: recursos narrativos para humanos y contrato máquina-legible (frontmatter, IDs, anclas, diagramas como código) para agentes de IA. | …genera documentación que también consumirán agentes de IA. |
+| [Rule-Math-Formulas](Rule-Math-Formulas.md) | Fórmulas matemáticas en Markdown: cuándo usarlas, sintaxis, soporte por visor con fuente, estilo para guías y verificación del render. | …incluye fórmulas, en especial en guías de estudio. |
+| [Rule-Illustrations](Rule-Illustrations.md) | Ilustraciones como evidencia: tipo de lámina (captura anotada, esquema propio, render 3D, diagrama), original intacto con sha256, anotación por script sin números a mano, pie en cinco tiempos con marca, manifiesto y verificación visual. | …incorpora imágenes que deben sostener afirmaciones, en especial en guías de estudio. |
 | [Rule-Narrative-Voice](Rule-Narrative-Voice.md) | Voz de la prosa: técnica y formal con criterio de autor humano; elimina los patrones que delatan texto generado en serie, sin tocar las zonas estructuradas. | …produce prosa extensa (resúmenes, análisis, impacto, recomendaciones) que debe leerse con naturalidad profesional. |
 | [Rule-Drift-Control](Rule-Drift-Control.md) | Control de deriva: contrato de ejecución, sensores (alcance, escritura, objetivo, invención, presupuesto, profundidad), puntos de control y re-anclaje. | …es larga, multi-fase o delega en subagentes y debe mantenerse dentro del alcance. |
 | [Rule-Security-Testing](Rule-Security-Testing.md) | Pruebas de seguridad autorizadas y no destructivas: ética y alcance, metodología OWASP, clasificación de hallazgos por severidad/CVSS y manejo de credenciales. | …releva la seguridad de un sistema web/API/aplicación y reporta vulnerabilidades. |
@@ -33,6 +35,8 @@ Referencia: [Guía conceptual](../Guides/Readme.md) · [README del framework](..
 - **Contexto/memoria del proyecto**: sumar `Rule-Indexing`.
 - **Tarea grande o paralelizable**: sumar `Rule-Agents`.
 - **Documentación consumida también por IA**: sumar `Rule-Dual-Audience`.
+- **Documento con fórmulas matemáticas**: sumar `Rule-Math-Formulas`.
+- **Documento con imágenes que funcionan como evidencia**: sumar `Rule-Illustrations`.
 - **Prosa extensa que debe leerse con naturalidad profesional**: sumar `Rule-Narrative-Voice`.
 - **Ejecución larga, multi-fase o delegada**: sumar `Rule-Drift-Control`.
 - **Auditoría de seguridad web/API**: sumar `Rule-Security-Testing`.

@@ -10,7 +10,7 @@ El énfasis y los criterios de calidad los fija el Profile que aplica este RuleS
 
 ## Reglas
 
-Documentation (`Rule-All`, `Rule-Workflow`, `Rule-Evidences`, `Rule-Markdown`, `Rule-Documentation`, `Rule-Indexing`, `Rule-Agents`) más `Rule-Dual-Audience` y `Rule-Narrative-Voice`:
+Documentation (`Rule-All`, `Rule-Workflow`, `Rule-Evidences`, `Rule-Markdown`, `Rule-Documentation`, `Rule-Indexing`, `Rule-Agents`) más `Rule-Dual-Audience`, `Rule-Narrative-Voice` y `Rule-Math-Formulas`:
 
 - `/IA/IA.Prompts/PromptFramework/Rules/Rule-All.md`
 - `/IA/IA.Prompts/PromptFramework/Rules/Rule-Workflow.md`
@@ -21,3 +21,4 @@ Documentation (`Rule-All`, `Rule-Workflow`, `Rule-Evidences`, `Rule-Markdown`, `
 - `/IA/IA.Prompts/PromptFramework/Rules/Rule-Agents.md`
 - `/IA/IA.Prompts/PromptFramework/Rules/Rule-Dual-Audience.md`
 - `/IA/IA.Prompts/PromptFramework/Rules/Rule-Narrative-Voice.md`
+- `/IA/IA.Prompts/PromptFramework/Rules/Rule-Math-Formulas.md`

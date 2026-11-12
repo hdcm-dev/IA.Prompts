@@ -15,6 +15,7 @@ Referencia: [Guía conceptual](../Guides/Readme.md) · [README del framework](..
 | [RuleSet-Documentation](RuleSet-Documentation.md) | Default + Documentation, Indexing, Agents | …genera o mantiene documentación técnica de calidad. |
 | [RuleSet-Solution-Documentation](RuleSet-Solution-Documentation.md) | Documentation + Dual-Audience, Drift-Control | …documenta una solución completa conforme a un marco maestro, con subagentes orquestados. |
 | [RuleSet-Study-Guide](RuleSet-Study-Guide.md) | Documentation + Dual-Audience, Narrative-Voice | …elabora una guía de estudio formativa sobre una temática, con prosa extensa y recorrido pedagógico. |
+| [RuleSet-Study-Guide-Con-Ilustraciones](RuleSet-Study-Guide-Con-Ilustraciones.md) | Study-Guide + Illustrations | …elabora una guía de estudio con estilo formal-narrativo e imágenes como evidencia (capturas anotadas, esquemas, renders 3D). |
 | [RuleSet-Development](RuleSet-Development.md) | Default + Agents | …analiza o revisa código y arquitectura. |
 | [RuleSet-Audit](RuleSet-Audit.md) | Default + Indexing, Agents | …inspecciona un entorno y reporta hallazgos sin alterar su estado. |
 | [RuleSet-Security-Audit](RuleSet-Security-Audit.md) | Default + Indexing, Agents, Documentation, Dual-Audience, Security-Testing | …audita la seguridad de un sistema web/API con pruebas autorizadas y produce un informe OWASP. |
@@ -30,6 +31,7 @@ Cada RuleSet carga **solo las Rules que su dominio necesita**: una tarea simple 
 - **Documentar**: `RuleSet-Documentation`.
 - **Documentar una solución completa (marco maestro + orquestación)**: `RuleSet-Solution-Documentation`.
 - **Elaborar una guía de estudio sobre una temática**: `RuleSet-Study-Guide`.
+- **Guía de estudio ilustrada, con tramos narrativos y evidencia marcada**: `RuleSet-Study-Guide-Con-Ilustraciones`.
 - **Revisar/analizar código**: `RuleSet-Development`.
 - **Auditar sin tocar el entorno**: `RuleSet-Audit`.
 - **Auditar la seguridad de un sistema web/API**: `RuleSet-Security-Audit`.
