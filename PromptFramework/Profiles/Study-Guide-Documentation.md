@@ -76,7 +76,7 @@ Todos los documentos temáticos siguen el mismo patrón, para que el lector apre
 
 # Diagramas típicos
 
-Mapa conceptual del dominio, relación entre escenarios y artefactos, flujos por rol, líneas de tiempo de un proceso, taxonomías. Diagramas como código (`Rule-Dual-Audience.md`).
+Mapa conceptual del dominio, relación entre escenarios y artefactos, flujos por rol, líneas de tiempo de un proceso, taxonomías. Diagramas como código (`Rule-Dual-Audience.md`). Las fórmulas matemáticas siguen `Rule-Math-Formulas.md`: sintaxis LaTeX en Markdown, cada símbolo definido y cada fórmula acompañada de su lectura en palabras.
 
 ---
 
