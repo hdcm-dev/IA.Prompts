@@ -4,6 +4,14 @@ Registro de cambios del framework de prompting. Formato basado en [Keep a Change
 
 ---
 
+## [1.16.0] — 2026-11-12
+
+### Agregado
+
+- **`PromptFramework/Rules/Rule-Math-Formulas.md`**: cómo escribir fórmulas matemáticas en Markdown (en línea, bloque `$$`, bloque `math`, `` $`…`$ ``), tabla de soporte por visor con fuentes oficiales y lo no confirmado marcado, reglas de estilo para guías de estudio (símbolos definidos, unidades, lectura en palabras, numeración), errores comunes y verificación del render. Se suma a `RuleSet-Study-Guide`, al perfil `Study-Guide-Documentation`, a la tabla de elementos de `Rule-Markdown` y al catálogo de `Rules/README.md`. Origen: pedido del PO del 2026-11-12.
+
+---
+
 ## [1.15.0] — 2026-10-27
 
 ### Agregado
