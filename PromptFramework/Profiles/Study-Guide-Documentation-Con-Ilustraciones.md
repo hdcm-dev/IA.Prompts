@@ -120,7 +120,7 @@ La forma formal (definiciones con id, marcas, tablas, remisiones) es el atajo de
 
 ## Cómo se ve
 
-Un bloque formal y su continuación. Ejemplo genérico (una guía sobre colas de mensajes):
+Un bloque formal y su continuación. Ejemplo genérico (una guía sobre colas de mensajes); la fecha, la cifra, la fuente y las marcas son **ficticias**, sólo muestran la forma: en una guía real, FN-4 exige que salgan del corpus.
 
 ```markdown
 **Def. 4.2 (Entrega al menos una vez).** El broker reintenta hasta recibir confirmación;
