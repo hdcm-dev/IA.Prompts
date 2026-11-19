@@ -12,6 +12,8 @@
 |-----------|-------------|-----------------|
 | `{ia-db}` | Ubicación de la base de conocimiento a sincronizar | Buscar en orden: `/ia-db` (workspace federado) → `<proyecto>/ia-db` → glob `*/ia-db/README.md` |
 | `{proyectos}` | Subconjunto de proyectos a sincronizar (solo modo federado) | Todos los proyectos listados en el manifiesto de la ia-db |
+| `{modelo-verificacion}` | Tier de modelo de la verificación adversarial | Mayor (`Rule-Agents.md`, «Modelo y esfuerzo por rol») |
+| `{esfuerzo}` | Esfuerzo de la actualización de cada índice | El de la tabla de etapas del Profile |
 
 ---
 
@@ -36,6 +38,7 @@ Sincronizar la ia-db con el estado actual del proyecto mediante una actualizaci�
 - Actualizar la tabla de navegación del punto de entrada si aparecieron o desaparecieron dominios o proyectos.
 - Incrementar la versión y actualizar la fecha en el manifiesto.
 - Informar un resumen de lo actualizado: índices tocados, entradas agregadas, corregidas y eliminadas.
+- Ejecutar por las etapas del Profile («Etapas, modelo y esfuerzo»), en su forma incremental: la detección de cambios es mecánica (`git diff --stat` y `git log` desde el commit del manifiesto, más `inventario.py` con el mapa de dominios para saber qué índices tocan los archivos cambiados); cada índice afectado lo actualiza un subagente de tier mayor con esfuerzo medio que recibe sólo su diff; `verificar_ia_db.py` corre sobre los índices tocados y la verificación adversarial (tier mayor, esfuerzo alto) se limita a las secciones cambiadas.
 
 ---
 
@@ -63,4 +66,5 @@ Aplicar:
 
 - [ ] Ningún índice contradice el estado actual de los proyectos.
 - [ ] Los índices no afectados no fueron modificados.
+- [ ] `verificar_ia_db.py` sobre los índices tocados termina sin problemas graves.
 - [ ] El manifiesto refleja la nueva fecha y versión.
