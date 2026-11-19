@@ -4,6 +4,27 @@ Registro de cambios del framework de prompting. Formato basado en [Keep a Change
 
 ---
 
+## [1.18.0] — 2026-11-19
+
+### Agregado
+
+- **`PromptFramework/Rules/Rule-Agents.md`, sección «Modelo y esfuerzo por rol»**: el modelo y el esfuerzo de cada subagente se eligen por la naturaleza de su rol (mecánico → script; aplicar lo especificado → tier rápido, esfuerzo bajo; relevar → rápido, medio; escribir → mayor, medio; verificar → mayor, alto; juzgar el conjunto → mayor, máximo), con tiers en lugar de nombres de modelo y una tabla de correspondencia vigente en un solo lugar. Lo mecánico no va a un modelo: lo corre el agente principal una vez y lo entrega. Override por parámetro del prompt y registro del consumo por rol para recalibrar. Origen: medición del indexado de GDA.Core.APP del 2026-11-19 (18 subagentes que heredaban el modelo y el esfuerzo de la sesión: 993 llamadas, 150 M de contexto releído, la mayor parte en listar, contar y recorrer la historia git, que cada uno rehacía).
+- **`tools/indexado/inventario.py`**: inventario previo de un indexado (etapa 0) a partir de los archivos versionados de una revisión, sin tocar el árbol de trabajo: totales, primer nivel, binarios por extensión, etiquetas y, con un mapa de dominios, un archivo por dominio con sus archivos, líneas, binarios por nombre e historia git, más los archivos sin dominio.
+- **`tools/indexado/verificar_ia_db.py`**: verificación mecánica de una ia-db (etapas 2a y 5): forma, citas `ruta#Lx-Ly` contra la revisión (rotas, fuera de rango, ambiguas, abreviadas, contextuales), remisiones «ver NN §x», patrones de secretos y cobertura de las secciones «Fuentes».
+- **`PromptFramework/Profiles/Knowledge-Indexing.md`, «Etapas, modelo y esfuerzo»**: las etapas del indexado con su tier y esfuerzo, el dimensionado por tamaño, las citas autocontenidas como requisito y la línea «Ejecución» en el manifiesto.
+- **`Tool-Prompts/Indexado-Documentado/Iniciar-Indexado.md` y `Actualizar-Indexado.md`**: parámetros opcionales `{modelo-verificacion}` y `{esfuerzo}`, ejecución por etapas (incremental en la actualización) y `verificar_ia_db.py` como criterio de finalización.
+
+### Validación
+
+- Prueba A/B sobre tres índices de la ia-db de GDA.Core.APP (dispositivos, CI/CD e impresión), 2026-11-19. A: forma anterior (escritor y verificador heredando modelo y esfuerzo de la sesión, sin inventario). B: esta regla (inventario por script, escritor tier mayor con esfuerzo medio, verificador tier mayor con esfuerzo alto y `verificar_ia_db.py`, citas autocontenidas). Seis jueces ciegos (dos por índice, 25 afirmaciones por versión cada uno, contra el código): B preferida 6 de 6; erróneas 1/150 en ambas; imprecisas 9 (A) contra 4 (B); utilidad 4,5 → 5,0; profundidad 4,0 → 5,0; claridad 4,5 → 4,0 y ausencia de duplicación 4,0 → 3,5 (las rutas completas ensanchan las tablas). Citas comprobables por script: 21 % → 100 %; rotas o fuera de rango: 5 → 0. Consumo: contexto releído −30 % (51,7 M → 36,2 M), salida −17 %, llamadas de los escritores −31 %. Los tres cambios se midieron juntos: la prueba no separa el aporte de cada uno.
+- Cierre de la misma base con la regla aplicada: ocho correctores en tier rápido con esfuerzo medio convirtieron 914 citas sueltas en autocontenidas (6,2 M de contexto releído en total); un control de tier mayor con esfuerzo alto muestreó 40 de ellas y no encontró ninguna atada al archivo equivocado. La base quedó con 2927 citas, 100 % comprobables por `verificar_ia_db.py`, y 0 problemas graves.
+
+### Nota
+
+- La versión salta a 1.18.0 porque los pull requests abiertos #5 y #6 reservan la 1.16.0 y la 1.17.0.
+
+---
+
 ## [1.15.0] — 2026-10-27
 
 ### Agregado

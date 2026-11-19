@@ -95,6 +95,7 @@ Sección final del README.md que captura la génesis y permite regenerar o actua
 - Alcance      : <proyectos indexados>
 - Fuentes      : <raíces escaneadas: src/, docs/, scripts/, ...>
 - Generado     : <fecha> · Versión: <n.n>
+- Ejecución    : <tier · esfuerzo de cada etapa>; verificación mecánica: <citas comprobadas / contextuales / rotas>
 - Actualizar   : /IA/IA.Prompts/Tool-Prompts/Indexado-Documentado/Actualizar-Indexado.md
 ```
 
@@ -128,6 +129,33 @@ Respetar además los patrones de `.gitignore` del proyecto cuando exista. Las ex
 - Identificar dominios de conocimiento y construir el inventario de fuentes por proyecto, aplicando las exclusiones definidas arriba.
 - En modo workspace, indexar los proyectos en paralelo mediante subagentes (uno por proyecto, según `Rule-Agents.md`) y consolidar la entrada federada al final.
 - Toda entrada del índice debe ser trazable a una fuente; lo no verificable se marca, no se completa por inferencia.
+
+## Etapas, modelo y esfuerzo
+
+El indexado aplica la sección «Modelo y esfuerzo por rol» de `Rule-Agents.md` en estas etapas. Las dos mecánicas las
+corre el agente principal con los scripts de `tools/indexado/` de este repositorio.
+
+| # | Etapa | Quién | Tier · esfuerzo |
+|---|---|---|---|
+| 0 | **Inventario**: `inventario.py --repo <fuente> --rev <commit> --salida <dir> --mapa mapa.json`. Antes, el agente principal arma `mapa.json` (índice → globs) y corre el script hasta que `sin-dominio.md` quede vacío o cada archivo que queda tenga motivo para no indexarse | Script | — |
+| 1 | **Escritura**: un subagente por índice; recibe `inventario.md` y su `dominio-NN.md`, y no vuelve a listar ni a recorrer la historia git | Subagente | Mayor · medio |
+| 2a | **Verificación mecánica**: `verificar_ia_db.py --ia-db <dir> --repo <fuente> --rev <commit> [--indices …]` sobre lo escrito | Script | — |
+| 2b | **Verificación adversarial**: recibe el informe de 2a, corrige lo que marca y juzga lo que el script no puede (si lo dicho es cierto, si falta algo del dominio, si duplica) | Subagente | Mayor · alto |
+| 3 | **Consolidación**: índice maestro y observaciones transversales | Subagente | Mayor · alto |
+| 4 | **Entrada**: `README.md` con el manifiesto | Subagente | Mayor · medio |
+| 5 | **Crítica**: `verificar_ia_db.py` sobre la base entera (cobertura, remisiones, forma, secretos) y un crítico que juzga lo que queda: duplicación, contradicciones, huecos | Script + subagente | Mayor · máximo disponible |
+| 6 | **Corrección**: aplicar los hallazgos concretos de 5 | Subagente | Rápido · bajo |
+
+**Dimensionado.** Hasta unos 150 archivos de texto, sin subagentes de escritura: el agente principal escribe, y un
+verificador adversarial revisa. Entre unos 150 y 1000, un escritor por dominio. Más de 1000, lotes por dominio. La
+etapa 2b no se omite nunca.
+
+**Citas autocontenidas.** Cada cita lleva la ruta completa desde la raíz del proyecto: `ruta/completa.ext#Lx-Ly`. Un
+`#Lx` suelto o un nombre de archivo sin carpetas no se pueden comprobar sin un modelo; el informe de 2a los cuenta, y
+su proporción es un indicador de la calidad de la base.
+
+**Registro de consumo.** Al cerrar, el manifiesto registra el modelo y el esfuerzo de cada etapa y, si el entorno lo
+permite medir, el consumo por etapa. Sirve para recalibrar la tabla.
 
 ## Actualización incremental
 

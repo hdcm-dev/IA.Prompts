@@ -12,6 +12,8 @@
 |-----------|-------------|-----------------|
 | `{proyectos}` | Uno o más repositorios o carpetas del workspace a indexar (también proyectos no versionados) | Solicitarlo al usuario antes de comenzar |
 | `{destino}` | Dónde generar la ia-db | Un proyecto → `<proyecto>/ia-db` · Varios proyectos o «en la raíz» → `/ia-db` en la raíz del workspace (modo federado) |
+| `{modelo-verificacion}` | Tier de modelo de la verificación adversarial y de la crítica | Mayor (`Rule-Agents.md`, «Modelo y esfuerzo por rol») |
+| `{esfuerzo}` | Esfuerzo de la escritura, si se quiere subir o bajar | El de la tabla de etapas del Profile |
 
 ---
 
@@ -34,7 +36,8 @@ Generar la ia-db de `{proyectos}` en `{destino}` conforme a la estructura canón
 - Analizar cada proyecto: dominios de conocimiento e inventario de fuentes. En modo federado, indexar los proyectos en paralelo con subagentes (uno por proyecto).
 - Generar el punto de entrada `README.md` y los índices temáticos en `{destino}/indexes/` según la estructura canónica del Profile.
 - Si un proyecto ya posee su propia ia-db, referenciarla desde el índice federado en lugar de duplicarla.
-- Completar el manifiesto de generación: prompt generador, alcance, fuentes, fecha, versión 1.0.
+- Completar el manifiesto de generación: prompt generador, alcance, fuentes, fecha, versión 1.0 (o la mayor siguiente si se regenera una base existente) y la línea «Ejecución».
+- Ejecutar por las etapas del Profile («Etapas, modelo y esfuerzo»): inventario y verificación mecánica por script; escritura, verificación adversarial, consolidación, entrada, crítica y corrección con el tier y el esfuerzo de esa tabla, salvo que la invocación los fije.
 
 ---
 
@@ -61,5 +64,6 @@ Aplicar:
 # Verificación de finalización
 
 - [ ] Un agente puede responder «¿de qué trata y con qué stack?» leyendo solo `README.md`.
+- [ ] `verificar_ia_db.py` sobre la base entera termina sin problemas graves (citas rotas o fuera de rango, remisiones rotas, secretos) y con la cobertura de «Fuentes» declarada en el manifiesto.
 - [ ] Cada índice cubre un único dominio, referencia sus fuentes y nada está duplicado.
 - [ ] El manifiesto permite regenerar (`Iniciar-Indexado`) y actualizar (`Actualizar-Indexado`) la base sin información externa.
